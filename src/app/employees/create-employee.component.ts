@@ -7,6 +7,7 @@ import { Department } from '../models/department.model';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  previewPhoto = false;
   departments: Department[] = [
     { id: 1, name: 'Help Desk' },
     { id: 2, name: 'HR' },
@@ -21,6 +22,9 @@ export class CreateEmployeeComponent implements OnInit {
    saveEmployee(empForm : NgForm): void{
      console.log(empForm.value);
    }
+ togglePhotoPreview() {
+  this.previewPhoto = !this.previewPhoto;
+}
 
 
 }
