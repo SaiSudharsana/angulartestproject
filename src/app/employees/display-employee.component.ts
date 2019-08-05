@@ -7,7 +7,7 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
   constructor() { }
 
   ngOnInit() {
@@ -20,6 +20,6 @@ export class DisplayEmployeeComponent implements OnInit {
     console.log('Current : ' + currentEmployee.name);
   }
    handleClick(){
-     this.notify.emit(this.employee.name);
+     this.notify.emit(this.employee);
    }
 }

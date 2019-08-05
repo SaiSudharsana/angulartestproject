@@ -11,6 +11,7 @@ export class ListemployeesComponent implements OnInit {
 
   employees: Employee[];
   employeeToDisplay: Employee;
+  dataFromChild: Employee;
   private arrayIndex=1;
   constructor(private _employeeService: EmployeeService) { }
 
