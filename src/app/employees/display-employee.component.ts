@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Employee } from '../models/employee.model';
 @Component({
   selector: 'app-display-employee',
@@ -7,6 +7,7 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
@@ -18,5 +19,7 @@ export class DisplayEmployeeComponent implements OnInit {
     console.log('Previous : ' + (previousEmployee ? previousEmployee.name : 'NULL') );
     console.log('Current : ' + currentEmployee.name);
   }
-
+   handleClick(){
+     this.notify.emit(this.employee.name);
+   }
 }

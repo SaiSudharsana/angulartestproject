@@ -29,4 +29,7 @@ export class ListemployeesComponent implements OnInit {
     this.arrayIndex = 1;
   }
   }
+  handleNotify(eventData: Employee) {
+    this.dataFromChild = eventData;
+  }
 }
