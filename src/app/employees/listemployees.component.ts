@@ -11,7 +11,6 @@ export class ListemployeesComponent implements OnInit {
 
   employees: Employee[];
   employeeToDisplay: Employee;
-  dataFromChild: Employee;
   private arrayIndex=1;
   constructor(private _employeeService: EmployeeService) { }
 
@@ -26,11 +25,9 @@ export class ListemployeesComponent implements OnInit {
           this.arrayIndex++;
           }
   else  {
-    this.employeetoDisplay=this.employees[0];
+    this.employeeToDisplay = this.employees[0];
     this.arrayIndex = 1;
+   }
   }
-  }
-  handleNotify(eventData: Employee) {
-    this.dataFromChild = eventData;
-  }
+
 }
