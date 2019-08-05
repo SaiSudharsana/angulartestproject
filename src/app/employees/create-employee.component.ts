@@ -1,3 +1,4 @@
+import { Employee } from '../models/employee.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model';
@@ -11,6 +12,18 @@ import { Router } from '@angular/router';
 })
 export class CreateEmployeeComponent implements OnInit {
   previewPhoto = false;
+  employee: Employee = {
+    id: null,
+    name: null,
+    gender: null,
+    contactPreference: null,
+    phoneNumber: null,
+    email: null,
+    dateOfBirth: null,
+    department: null,
+    isActive: null,
+    photoPath: null
+  };
   departments: Department[] = [
     { id: 1, name: 'Help Desk' },
     { id: 2, name: 'HR' },

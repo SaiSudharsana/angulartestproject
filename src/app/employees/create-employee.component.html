@@ -7,9 +7,9 @@
     <div class="panel-body">
 
       <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input required id="fullName" type="text" class="form-control" name="fullName"
-        [(ngModel)]="fullName" #fullNameControl="ngModel">
+        <label for="name">Name</label>
+        <input required id="name" type="text" class="form-control" name="name"
+        [(ngModel)]="employee.name" #fullNameControl="ngModel">
       </div>
 
 
@@ -58,13 +58,13 @@
       <div class="form-group">
         <label for="email">Email</label>
         <input id="email" required type="text" class="form-control" name="email"
-        [(ngModel)]="email">
+        [(ngModel)]="employee.email">
       </div>
 
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
         <input id="phoneNumber" type="text" class="form-control" name="phoneNumber"
-        [(ngModel)]="phoneNumber">
+        [(ngModel)]="employee.phoneNumber">
       </div>
 
       <div class="form-group">
@@ -72,12 +72,12 @@
         <div class="form-control">
           <label class="radio-inline">
             <input type="radio" name="contactPreference" value="email"
-            [(ngModel)]="contactPreference">
+            [(ngModel)]="employee.contactPreference">
             Email
           </label>
           <label class="radio-inline">
             <input type="radio" name="contactPreference" value="phone"
-            [(ngModel)]="contactPreference">
+            [(ngModel)]="employee.contactPreference">
             Phone
           </label>
         </div>
@@ -87,26 +87,33 @@
         <label>Gender</label>
         <div class="form-control">
           <label class="radio-inline">
-            <input type="radio" name="gender" value="male" [(ngModel)]="gender">
+            <input type="radio" name="gender" value="male" [(ngModel)]="employee.gender">
             Male
           </label>
           <label class="radio-inline">
-            <input type="radio" name="gender" value="female" [(ngModel)]="gender">
+            <input type="radio" name="gender" value="female" [(ngModel)]="employee.gender">
             Female
           </label>
         </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="department">Department</label>
-      <select id="department" name="department" [(ngModel)]="departments"
-              class="form-control">
-        <option *ngFor="let dept of departments" [value]="dept.id">
-          {{dept.name}}
-        </option>
-      </select>
-    </div>
+<div class="form-group"
+[class.has-error]="department.touched && department.invalid">
+<label for="department" class="control-label">Department</label>
+<select id="department" required #department="ngModel"
+     name="department" [(ngModel)]="employee.department"
+     class="form-control">
+<option *ngFor="let dept of departments" [value]="dept.id">
+ {{dept.name}}
+</option>
+</select>
+<span class="help-block"
+   *ngIf="department.touched && department.invalid">
+Department is required
+</span>
+</div>
+
     <div class="form-group">
       <label for="dateOfBirth">Date of Birth</label>
       <input id="dateOfBirth" type="date" class="form-control" name="dateOfBirth">
@@ -114,10 +121,10 @@
     <div class="form-group">
       <label for="photoPath">Photo path</label>
       <input id="photoPath" type="text" class="form-control" name="photoPath"
-      [(ngModel)]="photoPath">
+      [(ngModel)]="employee.photoPath">
     </div>
     <div class="form-group">
-    <img [src] ="photoPath" height="200" width="200" *ngIf="previewPhoto"/>
+    <img [src] ="employee.photoPath" height="200" width="200" *ngIf="previewPhoto"/>
   </div>
 
   <div class="form-group">
@@ -129,7 +136,7 @@
 <div class="form-group">
   <div class="form-control">
     <label class="checkbox-inline">
-      <input type="checkbox" name="isActive" [(ngModel)]="isActive">Is Active
+      <input type="checkbox" name="isActive" [(ngModel)]="employee.isActive">Is Active
     </label>
   </div>
 </div>
