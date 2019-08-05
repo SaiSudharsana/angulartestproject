@@ -11,7 +11,10 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 
 const appRoutes: Routes = [
   { path: 'list', component: ListemployeesComponent },
-  { path: 'create', component: CreateEmployeeComponent },
+  {
+    path: 'create',   component: CreateEmployeeComponent,
+  canDeactivate: [CreateEmployeeCanDeactivateGuardService]
+  },
   { path: '', redirectTo: '/list', pathMatch: 'full' }
 ];
 @NgModule({
@@ -27,7 +30,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  @ViewChild('employeeForm') public createEmployeeForm: NgForm;
   previewPhoto = false;
   employee: Employee = {
     id: null,
