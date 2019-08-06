@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Employee } from '../models/employee.model';
 @Component({
@@ -7,10 +8,12 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
+  private selectedEmployeeId: number;
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.selectedEmployeeId = +this._route.snapshot.paramMap.get('id');
   }
   ngOnChanges(changes: SimpleChanges) {
     const previousEmployee = <Employee>changes.employee.previousValue;
