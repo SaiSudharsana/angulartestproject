@@ -16,12 +16,20 @@ export class EmployeeDetailsComponent implements OnInit {
 
   ngOnInit()
   {
-    this._id = +this._route.snapshot.paramMap.get['id'];
-    this.employee = this._employeeService.getEmployee(this._id);
+    this._route.paramMap.subscribe(params => {
+       this._id = +params.get('id');
+       this.employee = this._employeeService.getEmployee(this._id);
+    });
+
 
   }
   viewNextEmployee() {
-       this._id = this._id + 1;
+       if(this._id < 3)
+       {
+         this._id = this._id + 1;
+       }else{
+         this._id=1;
+       }
        this._router.navigate(['/employees', this._id]);
 
   }
